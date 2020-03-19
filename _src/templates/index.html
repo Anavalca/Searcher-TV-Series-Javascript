@@ -3,16 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adalab Web Starter Kit</title>
-    <link rel="icon" href="./favicon.png" />
+    <title>CoronaMovies</title>
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
-    <div class="page">
-      <partial src="_header.html" label="Header"></partial>
-      <partial src="_main.html" label="Main"></partial>
-      <partial src="_link.html" aClass="link__adalab" text="Adalab" url="https://adalab.es"></partial>
-      <partial src="_link.html" aClass="link__github" text="GitHub" url="https://github.com"></partial>
+    <div class="wrapper">
+      <aside>
+        <h2>Buscador de series</h2>
+        <input type="text">
+        <button id="search_button" type="button">Search</button>
+        <ul class="favourites_list">
+        <!--favoritos-->
+        </ul>
+      </aside>
+      <main>
+        <ul class="movies_list">
+          <!--Listado de películas de las API-->
+        </ul>
+      </main>
     </div>
   </body>
 </html>
