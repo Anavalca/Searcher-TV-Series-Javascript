@@ -246,6 +246,50 @@ body .wrapper .aside_container {
   background-color: coral;
 }
 
+body .wrapper .aside_container #favourites_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+
+body .wrapper .aside_container #favourites_list .listSeries {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 15px 0px 15px 15px;
+}
+
+body .wrapper .aside_container #favourites_list .listSeries img {
+  width: 70px;
+}
+
+body .wrapper .aside_container #favourites_list .listSeries .main-title {
+  display: inline;
+  padding: 5px;
+}
+
+body .wrapper .aside_container #favourites_list .listSeries .deleteButton {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  color: black;
+}
+
 body .wrapper .main_container {
   background-color: cornflowerblue;
 }
@@ -256,6 +300,36 @@ body .wrapper .main_container ul {
   display: inline-flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  margin: 0 20px;
+}
+
+body .wrapper .main_container ul .listSeries {
+  width: 247px;
+  height: 370px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 20px;
+  border-radius: 32px;
+}
+
+body .wrapper .main_container ul .listSeries img {
+  border-radius: 21px;
+  margin-bottom: 18px;
 }
 
 /*# sourceMappingURL=main.css.map */

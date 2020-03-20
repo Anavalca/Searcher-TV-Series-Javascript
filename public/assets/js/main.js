@@ -1,7 +1,7 @@
 'use strict';
 
-const inputSearch = document.querySelector('#search_input');
-const button = document.querySelector('#search_button');
+const SearchInput = document.querySelector('#search_input');
+const searchButton = document.querySelector('#search_button');
 let ulSeries = document.querySelector('#series_list');
 let ulFav = document.querySelector('#favourites_list');
 
@@ -11,7 +11,7 @@ readLocalStorage();
 
 //LLAMAR A LA API PARA REALIZAR BÚSQUEDA
 function loadSeries(){
-  fetch(`http://api.tvmaze.com/search/shows?q=${inputSearch.value}`)
+  fetch(`http://api.tvmaze.com/search/shows?q=${SearchInput.value}`)
     .then(response => response.json())
     .then(data => {
       series = data;
@@ -73,7 +73,7 @@ function saveFavourites(event){
     setLocalStorage(event.currentTarget);
     renderFavourite(event.currentTarget);
   } else {
-    alert('Ya has añadido esta película a favoritos'); //buscar opción más elegante//
+    removeFavouriteFromLu(event);
   }
 
 }
@@ -81,12 +81,14 @@ function saveFavourites(event){
 //PINTAR FAVORITOS EN EL ASIDE
 function renderFavourite(favouriteElement) {
   let favCopy = favouriteElement.cloneNode(true);
+  favCopy.id = 'fav_' + favCopy.id;
   let buttomItem = document.createElement('button');
   buttomItem.type = 'button';
-  buttomItem.appendChild(document.createTextNode('Remove'));
+  buttomItem.classList.add('deleteButton');
+  buttomItem.addEventListener('click',removeFavouriteFromButton);
+  buttomItem.appendChild(document.createTextNode('x'));
   favCopy.appendChild(buttomItem);
   ulFav.appendChild(favCopy);
-
 }
 
 //GUARDAR FAVORITOS EN LOCALSTORAGE
@@ -108,16 +110,13 @@ function readLocalStorage() {
       favourites.push(objetSerie);
       renderFavouritesOfLocalStorage(objetSerie);
     }
-  } else {
-    return localInfo = [];
-    //para que no de null devolvemos array vacío para llenarlo.
   }
 }
 
 //PINTAR DATOS DE LOCAL STORAGE
 function renderFavouritesOfLocalStorage(objectSerie) {
   let liObject = document.createElement('li');
-  liObject.setAttribute('id', objectSerie.id);
+  liObject.setAttribute('id', 'fav_' + objectSerie.id);
   liObject.classList.add('listSeries');
 
   let imgObject = document.createElement('img');
@@ -129,15 +128,45 @@ function renderFavouritesOfLocalStorage(objectSerie) {
 
   let buttomItem = document.createElement('button');
   buttomItem.type = 'button';
-  buttomItem.appendChild(document.createTextNode('Remove'));
+  buttomItem.classList.add('deleteButton');
+  buttomItem.appendChild(document.createTextNode('x'));
+  buttomItem.addEventListener('click',removeFavouriteFromButton);
 
   //CREAR ESTRUCTURA DE CADA OBJETO DE FAVORITOS
   liObject.appendChild(imgObject);
   liObject.appendChild(pObject);
   liObject.appendChild(buttomItem);
   ulFav.appendChild(liObject);
+
 }
 
-button.addEventListener('click', loadSeries);
+function removeFavouriteFromId(id){
+  let index = 0;
+  for (let favourite of favourites){
+    if(favourite.id === id){
+      favourites.splice(index, 1);
+      localStorage.setItem('seriesFavInfo', JSON.stringify(favourites));
+      break;
+    }
+    index++;
+  }
+
+  let elementToRemove = document.querySelector('#fav_' + id);
+  elementToRemove.remove();
+
+}
+
+function removeFavouriteFromButton(event){
+  let removeId = event.currentTarget.parentElement.id;
+  removeId = removeId.substr(4);
+  removeFavouriteFromId(removeId);
+}
+
+function removeFavouriteFromLu(event){
+  let removeId = event.currentTarget.id;
+  removeFavouriteFromId(removeId);
+}
+
+searchButton.addEventListener('click', loadSeries);
 
 //# sourceMappingURL=main.js.map

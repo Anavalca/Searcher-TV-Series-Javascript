@@ -8,6 +8,39 @@ body {
 
 		.aside_container{
 			background-color: coral;
+
+			#favourites_list {
+				display: flex;
+				flex-direction: column;
+				justify-content: start;
+
+				.listSeries{
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					padding: 15px 0px 15px 15px;
+					
+					img {
+						
+						width: 70px;
+					}
+
+					.main-title {
+						display: inline;
+						padding: 5px;
+					}
+
+					.deleteButton {
+
+						border-radius: 50%;
+						height: 30px;
+						width: 30px;
+						background-color: white;
+						color: black;
+					}
+				}
+
+			}
 		
 			
 		}
@@ -20,6 +53,26 @@ body {
 			& ul {
 				display: inline-flex;
 				flex-wrap: wrap;
+				justify-content: stretch;
+				margin: 0 20px;
+
+				.listSeries {
+					width: 247px;
+					height: 370px;
+					background-color: white;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					margin: 20px;
+					border-radius: 32px;
+
+					img {
+						border-radius: 21px;
+						margin-bottom: 18px;
+
+					}
+				}
 			}
 			
 			
