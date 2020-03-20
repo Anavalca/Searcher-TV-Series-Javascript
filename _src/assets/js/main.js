@@ -45,13 +45,6 @@ function showSeriesSearch(arr){
     ulSeries.appendChild(liObject);
   }
 
-  // for(let item of arr){
-  //   if (item.show.image !== null){
-  //     ulMovies.innerHTML += `<li class="listSeries" id=${item.show.id}><img src='${item.show.image.medium}'><p class='main-title'>${item.show.name}</p></li>`;
-  //   } else {
-  //     ulMovies.innerHTML += `<li class="listSeries" id=${item.show.id}><img src='https://via.placeholder.com/210x295/ffffff/666666/?text=TV'><p class='main-title'>${item.show.name}</p></li>`;
-  //   }
-  // }
   addClickListeners();
 }
 
@@ -65,24 +58,24 @@ function addClickListeners(){
 
 //GUARDAR FAVORITOS
 function saveFavourites(event){
-  const index = event.currentTarget.id;
-  if (favourites.indexOf(index) === -1) {
+  let idFound = false;
+
+  //iteramos todos los elementos de favourites para saber si el nuevo elemento esta ya metido
+  for (let favourite of favourites){
+    if(favourite.id === event.currentTarget.id){
+      idFound = true;
+      break;
+    }
+  }
+  
+  //si no estaba metido lo metemos
+  if(idFound === false){
     setLocalStorage(event.currentTarget);
     renderFavourite(event.currentTarget);
   } else {
     alert('Ya has añadido esta película a favoritos'); //buscar opción más elegante//
   }
-}
 
-//GUARDAR FAVORITOS EN LOCALSTORAGE
-function setLocalStorage(currentFav) {
-  let newFavourite = new Object();
-  newFavourite.id = currentFav.id;
-  newFavourite.imgSrc = currentFav.childNodes[0].src;
-  newFavourite.name = currentFav.childNodes[1].textContent;
-  
-  favourites.push(newFavourite);
-  localStorage.setItem('seriesFavInfo', JSON.stringify(favourites));
 }
 
 //PINTAR FAVORITOS EN EL ASIDE
@@ -94,6 +87,17 @@ function renderFavourite(favouriteElement) {
   favCopy.appendChild(buttomItem);
   ulFav.appendChild(favCopy);
 
+}
+
+//GUARDAR FAVORITOS EN LOCALSTORAGE
+function setLocalStorage(currentFav) {
+  let newFavourite = new Object();
+  newFavourite.id = currentFav.id;
+  newFavourite.imgSrc = currentFav.childNodes[0].src;
+  newFavourite.name = currentFav.childNodes[1].textContent;
+  
+  favourites.push(newFavourite);
+  localStorage.setItem('seriesFavInfo', JSON.stringify(favourites));
 }
 
 //LEER LOS DATOS DE LOCAL STORAGE
@@ -113,6 +117,7 @@ function readLocalStorage() {
 //PINTAR DATOS DE LOCAL STORAGE
 function renderFavouritesOfLocalStorage(objectSerie) {
   let liObject = document.createElement('li');
+  liObject.setAttribute('id', objectSerie.id);
   liObject.classList.add('listSeries');
 
   let imgObject = document.createElement('img');
