@@ -8,6 +8,7 @@ let ulFav = document.querySelector('#favourites_list');
 let series = [];
 let favourites = [];
 
+//LLAMAR A LA API PARA REALIZAR BÚSQUEDA
 function loadSeries(){
   fetch(`http://api.tvmaze.com/search/shows?q=${inputSearch.value}`)
     .then(response => response.json())
@@ -17,6 +18,7 @@ function loadSeries(){
     });
 }
 
+//PINTAR LOS RESULTADOS DE LA BUSQUEDA
 function showSeriesSearch(arr){
   for(let item of arr){
     if (item.show.image !== null){
@@ -28,6 +30,7 @@ function showSeriesSearch(arr){
   }
 }
 
+//PINTAR AÑADIR EVENTO A LOS LI (CADA SERIE MOSTRADA)
 function addClickListeners(){
   const liList = document.querySelectorAll('#series_list li');
   for(let li of liList){
@@ -35,6 +38,7 @@ function addClickListeners(){
   }
 }
 
+//GUARDAR FAVORITOS EN EL ARRAY DE FAVORITOS
 function saveFavourites(event){
   const index = event.currentTarget.id;
   if (favourites.indexOf(index) === -1) {
@@ -42,10 +46,11 @@ function saveFavourites(event){
     // setLocalStorage(favourites);
     renderFavourite(event.currentTarget);
   } else {
-    alert('Ya has añadido esta película a favoritos'); //buscar oppción más elegante//
+    alert('Ya has añadido esta película a favoritos'); //buscar opción más elegante//
   }
 }
 
+//PINTAR FAVORITOS EN EL ASIDE
 function renderFavourite(favouriteElement) {
   let favCopy = favouriteElement.cloneNode(true);
   let buttomItem = document.createElement('button');
@@ -55,16 +60,5 @@ function renderFavourite(favouriteElement) {
 
   ulFav.appendChild(favCopy);
 }
-
-//7.Funcion que relaciona el favorito con su ID, lo lee y devuelve el objeto para pintar
-
-// function getSerieObject(idSerie) {
-//   for (let serie of series) {
-//     if (serie.show.id === idSerie) {
-//       return serie;
-//     }
-//   }
-// }
-
 
 button.addEventListener('click', loadSeries);
