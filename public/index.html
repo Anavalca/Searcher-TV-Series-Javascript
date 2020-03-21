@@ -5,8 +5,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>CoronaSeries</title>
-        <link rel="stylesheet" href="./assets/css/main.css"
-        />
+        <script src="https://kit.fontawesome.com/260175cdbc.js"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./assets/css/main.css" />
     </head>
     
     <body>
@@ -17,18 +18,20 @@
 
                     <div class="search_container">
                         <input id="search_input" type="text">
-                        <button id="search_button" type="button">Search</button>
+                        <button id="search_button" type="button"><i class="fas fa-mobile-alt" id="icon"></i>
+                        </button>
                     </div>
                 </header>
-                <aside class="aside_container">
-                    <ul id="favourites_list">
-                        <!--favoritos-->
+                <aside class="aside_container"> <i class="icon_fav fas fa-mobile-alt" id="icon"></i>
+
+                    <ul id="favourites_list"></ul>
+                    <!--favoritos-->
                     </ul>
                 </aside>
             </div>
             <main class="main_container">
                 <ul id="series_list">
-                    <!--Listado de películas de las API-->
+                    <!--Listado de series de las API-->
                 </ul>
             </main>
         </div>

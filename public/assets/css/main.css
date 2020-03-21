@@ -234,7 +234,7 @@ li {
 
 body .wrapper {
   height: 100vh;
-  background-color: cornflowerblue;
+  background-color: #3f3f3f;
 }
 
 body .wrapper .header_container {
@@ -244,7 +244,7 @@ body .wrapper .header_container {
 
 body .wrapper .header_container header {
   height: 80px;
-  background-color: #1b9b74;
+  background-color: #3f3f3f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -258,11 +258,12 @@ body .wrapper .header_container header {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 0 40px 0 40px;
 }
 
 body .wrapper .header_container header h1 {
   margin: 0px;
-  color: white;
+  color: #259179;
   display: inline;
 }
 
@@ -273,7 +274,6 @@ body .wrapper .header_container header .search_container {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-right: 40px;
 }
 
 body .wrapper .header_container header .search_container input {
@@ -292,7 +292,17 @@ body .wrapper .header_container header .search_container button {
 }
 
 body .wrapper .header_container .aside_container {
-  background-color: coral;
+  background-color: #259179;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 body .wrapper .header_container .aside_container #favourites_list {
@@ -306,6 +316,9 @@ body .wrapper .header_container .aside_container #favourites_list {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 body .wrapper .header_container .aside_container #favourites_list .listSeries {
@@ -343,7 +356,7 @@ body .wrapper .header_container .aside_container #favourites_list .listSeries .d
   font-weight: 200;
   height: 18px;
   width: 18px;
-  background-color: coral;
+  background-color: #259179;
   color: white;
   margin: 8px;
   padding-bottom: 2px;
@@ -353,7 +366,7 @@ body .wrapper .header_container .aside_container #favourites_list .listSeries .d
 
 body .wrapper .main_container {
   height: auto;
-  background-color: cornflowerblue;
+  background-color: #3f3f3f;
 }
 
 body .wrapper .main_container ul {
@@ -365,7 +378,7 @@ body .wrapper .main_container ul {
   -webkit-box-pack: stretch;
   -ms-flex-pack: stretch;
   justify-content: stretch;
-  margin: 140px 20px;
+  margin: 190px 20px;
 }
 
 body .wrapper .main_container ul .listSeries {
@@ -396,7 +409,7 @@ body .wrapper .main_container ul .listSeries img {
 }
 
 body .wrapper .main_container ul .favouritesMainStyle {
-  background-color: coral;
+  background-color: #259179;
   color: white;
 }
 

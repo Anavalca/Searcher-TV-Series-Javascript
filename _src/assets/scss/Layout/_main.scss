@@ -4,7 +4,7 @@ body {
 		// display: grid;
 		// grid-template-columns: 1fr 4fr;
 		 height: 100vh;
-		 background-color: cornflowerblue;
+		 background-color: $secondaryColor;
 
 		.header_container {
 			position: fixed;
@@ -12,23 +12,23 @@ body {
 
 			header{
 				height: 80px;
-				background-color: rgb(27, 155, 116);
+				background-color: $secondaryColor;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: center;
+				padding: 0 40px 0 40px;
 			
 				h1 {
 					margin: 0px;
-					color: white ;
+					color: $primaryColor;
 					display: inline;
 				}
 
 				.search_container {
 					display: flex;
 					align-items: center;
-					margin-right: 40px;
-
+					
 					input {
 						border-radius: 2rem;
 						height: 30px;
@@ -47,18 +47,19 @@ body {
 				}
 			}
 			.aside_container{
-				// position: fixed;
-				background-color: coral;
+				background-color: $primaryColor;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
 
 
 				#favourites_list {
 					display: flex;
 					flex-direction: row;
 					justify-content: start;
+					align-items: center;
 
-					
 					.listSeries{
-					
 						display: flex;
 						flex-direction: row;
 						justify-content: space-evenly;
@@ -78,13 +79,12 @@ body {
 						}
 
 						.deleteButton {
-
 							border-radius: 50%;
 							font-size: 15px;
 							font-weight: 200;
 							height: 18px;
 							width: 18px;
-							background-color: coral;
+							background-color: $primaryColor;
 							color: white;
 							margin: 8px;
 							padding-bottom: 2px;
@@ -102,13 +102,13 @@ body {
 		.main_container{
 			
 			height: auto;
-			background-color: cornflowerblue;
+			background-color: $secondaryColor;
 
 			& ul {
 				display: inline-flex;
 				flex-wrap: wrap;
 				justify-content: stretch;
-				margin: 140px 20px;
+				margin: 190px 20px;
 
 				.listSeries {
 					width: 247px;
@@ -122,45 +122,22 @@ body {
 					border-radius: 32px;
 					cursor: pointer;
 
-
 					img {
 						border-radius: 21px;
 						margin-bottom: 18px;
-
 					}
 				}
 
-				
 				.favouritesMainStyle{
-					background-color: coral;
+					background-color:$primaryColor;
 					color: white;
 				}
 
 			}
 			
-			
 		}
 
-
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
