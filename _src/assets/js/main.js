@@ -1,18 +1,21 @@
 'use strict';
 
-const SearchInput = document.querySelector('#search_input');
+const searchInput = document.querySelector('#search_input');
 const searchButton = document.querySelector('#search_button');
 let ulTvSeries = document.querySelector('#series_list');
 let ulFav = document.querySelector('#favourites_list');
+let webLogo = document.querySelector('#title_container');
+let gif = document.querySelector('.gif_container');
 
 let TvSeries = [];
 let favourites = [];
+apearTVgif();
 //Cargo local Storage cada vez que recargo la página
 readLocalStorage();
 
 //LLAMAR A LA API PARA REALIZAR BÚSQUEDA
 function loadSeries(){
-  fetch(`http://api.tvmaze.com/search/shows?q=${SearchInput.value}`)
+  fetch(`http://api.tvmaze.com/search/shows?q=${searchInput.value}`)
     .then(response => response.json())
     .then(data => {
       TvSeries = data;
@@ -22,7 +25,8 @@ function loadSeries(){
 
 //PINTAR LOS RESULTADOS DE LA BUSQUEDA EN EL MAIN
 function showSeriesSearch(arrTvSeries){
-  ulTvSeries.innerHTML = '';
+  removeChildren(gif);
+  removeChildren(ulTvSeries);
   for(let item of arrTvSeries){
     let isFavourite = false;
     let liObject = document.createElement('li');
@@ -180,8 +184,10 @@ function removeFavouriteFromId(id){
   elementToRemove.remove();
   //QUITAR ESTILOS DE FAVORITOS DEL LISTADO DEL MAIN
   let elementToRestore = document.querySelector('#ele_'+id);
-  elementToRestore.classList.remove('favouritesMainStyle');
-  elementToRestore.lastChild.remove(); //ELIMINO ICONO DE FAVORITO
+  if(elementToRestore !== null){
+    elementToRestore.classList.remove('favouritesMainStyle');
+    elementToRestore.lastChild.remove(); //ELIMINO ICONO DE FAVORITO
+  }
 }
 
 // BUSCO EL ID DEL ELEMENTO DE FAVORITOS DE LA **SECCIÓN** QUE QUIERO ELIMINAR
@@ -197,4 +203,28 @@ function removeFavouriteFromUl(event){
   removeFavouriteFromId(removeId);
 }
 
+//CUANDO HACEMOS CLICK EN EL LOGO DE LA WEB RESTAURAMOS EL MAIN Y EL INPUT SEARCH
+function restaureWeb(){
+  searchInput.value = '';
+  removeChildren(ulTvSeries);
+  apearTVgif();
+}
+
+//PINTAR PORTADA DE LA WEB
+function apearTVgif(){
+  let gifObject = document.createElement('img');
+  gifObject.setAttribute('src','./assets/images/tv.gif');
+  gifObject.setAttribute('id', 'gif_tv');
+  removeChildren(gif);
+  gif.appendChild(gifObject);
+}
+
+//FUNCIÓN PARA ELIMINAR LOS HIJOS DE UN ELEMENTO
+function removeChildren(object){
+  while (object.firstChild) {
+    object.removeChild(object.firstChild);
+  }
+}
+
 searchButton.addEventListener('click', loadSeries);
+webLogo.addEventListener('click', restaureWeb);

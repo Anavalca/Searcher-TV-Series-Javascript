@@ -21,6 +21,7 @@ body {
 				#title_container {
 					display: flex;
 					align-items: center;
+					cursor: pointer;
 
 					#icon_title {
 						width: 33px;
@@ -80,7 +81,6 @@ body {
 					color: white;
 				}
 
-
 				#favourites_list {
 					display: flex;
 					flex-direction: row;
@@ -127,9 +127,24 @@ body {
 		}
 	
 		.main_container{
-			
 			height: auto;
 			background-color: $secondaryColor;
+
+			.gif_container{
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+
+				#gif_tv {
+					width: 350px;
+					border: solid 21px white;
+					border-radius: 2rem;
+					margin-top: 225px;
+				}
+			}
+			
 
 			& ul {
 				display: inline-flex;
@@ -172,9 +187,10 @@ body {
 					color: white;
 				}
 			}
-		}
+		}	
 	}
 }
+
 
 
 
