@@ -232,6 +232,10 @@ li {
   list-style: none;
 }
 
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
 body .wrapper {
   height: 100vh;
   background-color: #3f3f3f;
@@ -261,10 +265,25 @@ body .wrapper .header_container header {
   padding: 0 40px 0 40px;
 }
 
-body .wrapper .header_container header h1 {
+body .wrapper .header_container header #title_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+body .wrapper .header_container header #title_container #icon_title {
+  width: 33px;
+}
+
+body .wrapper .header_container header #title_container h1 {
+  font-family: "Special Elite", cursive;
+  font-size: 42px;
+  padding-top: 8px;
   margin: 0px;
-  color: #259179;
-  display: inline;
+  color: white;
 }
 
 body .wrapper .header_container header .search_container {
@@ -278,17 +297,24 @@ body .wrapper .header_container header .search_container {
 
 body .wrapper .header_container header .search_container input {
   border-radius: 2rem;
-  height: 30px;
+  height: 45px;
+  width: 330px;
   margin-right: 10px;
+  padding: 10px;
 }
 
 body .wrapper .header_container header .search_container button {
   border-radius: 2rem;
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   border-bottom: none;
   cursor: pointer;
+  color: #259179;
+}
+
+body .wrapper .header_container header .search_container button .icon_search {
+  font-size: 22px;
 }
 
 body .wrapper .header_container .aside_container {
@@ -303,6 +329,12 @@ body .wrapper .header_container .aside_container {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 0 10px 0 10px;
+}
+
+body .wrapper .header_container .aside_container .icon_fav {
+  font-size: 18px;
+  color: white;
 }
 
 body .wrapper .header_container .aside_container #favourites_list {
@@ -347,19 +379,20 @@ body .wrapper .header_container .aside_container #favourites_list .listSeries im
 
 body .wrapper .header_container .aside_container #favourites_list .listSeries .main-title {
   display: inline;
-  padding: 14px;
+  font-size: 15px;
+  padding: 8px;
 }
 
 body .wrapper .header_container .aside_container #favourites_list .listSeries .deleteButton {
   border-radius: 50%;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 200;
   height: 18px;
   width: 18px;
   background-color: #259179;
   color: white;
-  margin: 8px;
-  padding-bottom: 2px;
+  margin-right: 8px;
+  padding-bottom: 6px;
   border: none;
   cursor: pointer;
 }
@@ -405,11 +438,22 @@ body .wrapper .main_container ul .listSeries {
 
 body .wrapper .main_container ul .listSeries img {
   border-radius: 21px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
+}
+
+body .wrapper .main_container ul .listSeries .main-title {
+  font-size: 20px;
+  font-weight: 600;
 }
 
 body .wrapper .main_container ul .favouritesMainStyle {
   background-color: #259179;
+  color: white;
+}
+
+body .wrapper .main_container ul .icon_fav {
+  margin-top: 3px;
+  font-size: 10px;
   color: white;
 }
 

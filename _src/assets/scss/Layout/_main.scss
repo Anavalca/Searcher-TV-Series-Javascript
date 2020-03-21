@@ -1,4 +1,5 @@
 body {
+	font-family: $mainFont;
 	
 	.wrapper {
 		// display: grid;
@@ -18,31 +19,50 @@ body {
 				justify-content: space-between;
 				align-items: center;
 				padding: 0 40px 0 40px;
+
+				#title_container {
+					display: flex;
+					align-items: center;
+
+					#icon_title {
+						width: 33px;
+					}
 			
-				h1 {
-					margin: 0px;
-					color: $primaryColor;
-					display: inline;
+					h1 {
+						font-family: $titleFont;
+						font-size: 42px;
+						padding-top: 8px;
+						margin: 0px;
+						color: white;
+					}
 				}
 
 				.search_container {
 					display: flex;
 					align-items: center;
-					
+										
 					input {
 						border-radius: 2rem;
-						height: 30px;
+						height: 45px;
+						width: 330px;
 						margin-right: 10px;
+						padding: 10px;
 					}
 				
 
 					button{
 						border-radius: 2rem;
 						display: inline-block;
-						width: 30px;
-						height: 30px;
+						width: 45px;
+						height: 45px;
 						border-bottom: none;
 						cursor: pointer;
+						color: $primaryColor;
+
+						.icon_search{
+							font-size: 22px;
+						}
+
 					}
 				}
 			}
@@ -51,6 +71,12 @@ body {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				padding: 0 10px 0 10px;
+
+				.icon_fav {
+					font-size: 18px;
+					color: white;
+				}
 
 
 				#favourites_list {
@@ -75,19 +101,20 @@ body {
 
 						.main-title {
 							display: inline;
-							padding: 14px;
+							font-size: 15px;
+							padding: 8px;
 						}
 
 						.deleteButton {
 							border-radius: 50%;
-							font-size: 15px;
+							font-size: 14px;
 							font-weight: 200;
 							height: 18px;
 							width: 18px;
 							background-color: $primaryColor;
 							color: white;
-							margin: 8px;
-							padding-bottom: 2px;
+							margin-right: 8px;
+							padding-bottom: 6px;
 							border: none;
 							cursor: pointer;
 						}
@@ -124,12 +151,23 @@ body {
 
 					img {
 						border-radius: 21px;
-						margin-bottom: 18px;
+						margin-bottom: 12px;
+					}
+
+					.main-title{
+						font-size: 20px;
+						font-weight: 600;
 					}
 				}
 
 				.favouritesMainStyle{
 					background-color:$primaryColor;
+					color: white;
+				}
+
+				.icon_fav {
+					margin-top: 3px;
+					font-size: 10px;
 					color: white;
 				}
 

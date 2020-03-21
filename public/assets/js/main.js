@@ -23,6 +23,7 @@ function loadSeries(){
 function showSeriesSearch(arr){
   ulSeries.innerHTML = '';
   for(let item of arr){
+    let isFavourite = false;
     let liObject = document.createElement('li');
     liObject.setAttribute('id',item.show.id);
     liObject.classList.add('listSeries');
@@ -40,16 +41,26 @@ function showSeriesSearch(arr){
     pObject.appendChild(document.createTextNode(item.show.name));
 
     //COMPROBAR SI EN LA BÚSQUEDA DE LA API HAY ALGÚN FAVORITO Y AÑADIRLE LA CLASE
+    let startIcon;
     for(let favourite of favourites){
       if(item.show.id === parseInt(favourite.id)){
         liObject.classList.add('favouritesMainStyle');
+        startIcon = document.createElement('i');
+        startIcon.classList.add('icon_fav');
+        startIcon.classList.add('fas');
+        startIcon.classList.add('fa-star');
+        isFavourite = true;
       }
     }
-
+    
     //CREAR ESTRUCTURA DE CADA OBJETO DE FAVORITOS
     liObject.appendChild(imgObject);
     liObject.appendChild(pObject);
+    if(isFavourite){
+      liObject.appendChild(startIcon);
+    }
     ulSeries.appendChild(liObject);
+
 
   }
   addClickListeners();
@@ -67,6 +78,12 @@ function addClickListeners(){
 //GUARDAR FAVORITOS
 function saveFavourites(event){
   event.currentTarget.classList.add('favouritesMainStyle'); //COLOREAR FAVORITOS DEL LISTADO DEL MAIN
+  let startIcon = document.createElement('i');
+  startIcon.classList.add('icon_fav');
+  startIcon.classList.add('fas');
+  startIcon.classList.add('fa-star');
+  event.currentTarget.appendChild(startIcon);
+
   let idFound = false;
 
   //iteramos todos los elementos de favourites para saber si el nuevo elemento esta ya metido
