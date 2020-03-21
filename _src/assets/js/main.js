@@ -39,13 +39,21 @@ function showSeriesSearch(arr){
     pObject.classList.add('main-title');
     pObject.appendChild(document.createTextNode(item.show.name));
 
+    //COMPROBAR SI EN LA BÚSQUEDA DE LA API HAY ALGÚN FAVORITO Y AÑADIRLE LA CLASE
+    for(let favourite of favourites){
+      if(item.show.id === parseInt(favourite.id)){
+        liObject.classList.add('favouritesMainStyle');
+      }
+    }
+
     //CREAR ESTRUCTURA DE CADA OBJETO DE FAVORITOS
     liObject.appendChild(imgObject);
     liObject.appendChild(pObject);
     ulSeries.appendChild(liObject);
-  }
 
+  }
   addClickListeners();
+
 }
 
 //PINTAR AÑADIR EVENTO A LOS LI (CADA SERIE MOSTRADA)
@@ -58,6 +66,7 @@ function addClickListeners(){
 
 //GUARDAR FAVORITOS
 function saveFavourites(event){
+  event.currentTarget.classList.add('favouritesMainStyle'); //COLOREAR FAVORITOS DEL LISTADO DEL MAIN
   let idFound = false;
 
   //iteramos todos los elementos de favourites para saber si el nuevo elemento esta ya metido
@@ -67,7 +76,6 @@ function saveFavourites(event){
       break;
     }
   }
-  
   //si no estaba metido lo metemos
   if(idFound === false){
     setLocalStorage(event.currentTarget);
@@ -75,7 +83,6 @@ function saveFavourites(event){
   } else {
     removeFavouriteFromLu(event);
   }
-
 }
 
 //PINTAR FAVORITOS EN EL ASIDE
@@ -163,6 +170,7 @@ function removeFavouriteFromButton(event){
 }
 
 function removeFavouriteFromLu(event){
+  event.currentTarget.classList.remove('favouritesMainStyle'); //QUITAR COLOR DE FAVORITOS DEL LISTADO DEL MAIN
   let removeId = event.currentTarget.id;
   removeFavouriteFromId(removeId);
 }

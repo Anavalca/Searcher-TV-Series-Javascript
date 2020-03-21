@@ -1,60 +1,114 @@
 body {
-	height: 100vh;
-
+	
 	.wrapper {
-		display: grid;
-		grid-template-columns: 1fr 3fr;
- 		height: 100%;
+		// display: grid;
+		// grid-template-columns: 1fr 4fr;
+		 height: 100vh;
+		 background-color: cornflowerblue;
 
-		.aside_container{
-			background-color: coral;
+		.header_container {
+			position: fixed;
+			width: 100%;
 
-			#favourites_list {
+			header{
+				height: 80px;
+				background-color: rgb(27, 155, 116);
 				display: flex;
-				flex-direction: column;
-				justify-content: start;
-
-				.listSeries{
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					padding: 15px 0px 15px 15px;
-					
-					img {
-						
-						width: 70px;
-					}
-
-					.main-title {
-						display: inline;
-						padding: 5px;
-					}
-
-					.deleteButton {
-
-						border-radius: 50%;
-						height: 30px;
-						width: 30px;
-						background-color: white;
-						color: black;
-					}
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			
+				h1 {
+					margin: 0px;
+					color: white ;
+					display: inline;
 				}
 
-			}
-		
-			
-		}
+				.search_container {
+					display: flex;
+					align-items: center;
+					margin-right: 40px;
 
+					input {
+						border-radius: 2rem;
+						height: 30px;
+						margin-right: 10px;
+					}
+				
+
+					button{
+						border-radius: 2rem;
+						display: inline-block;
+						width: 30px;
+						height: 30px;
+						border-bottom: none;
+						cursor: pointer;
+					}
+				}
+			}
+			.aside_container{
+				// position: fixed;
+				background-color: coral;
+
+
+				#favourites_list {
+					display: flex;
+					flex-direction: row;
+					justify-content: start;
+
+					
+					.listSeries{
+					
+						display: flex;
+						flex-direction: row;
+						justify-content: space-evenly;
+						align-items: center;
+						background: white;
+						border-radius: 20px;
+						margin: 15px;
+
+						img {
+							width: 39px;
+							border-radius: 46px;
+						}
+
+						.main-title {
+							display: inline;
+							padding: 14px;
+						}
+
+						.deleteButton {
+
+							border-radius: 50%;
+							font-size: 15px;
+							font-weight: 200;
+							height: 18px;
+							width: 18px;
+							background-color: coral;
+							color: white;
+							margin: 8px;
+							padding-bottom: 2px;
+							border: none;
+							cursor: pointer;
+						}
+					}
+
+				}
+			}
+		}
+	
 
 
 		.main_container{
+			
+			height: auto;
 			background-color: cornflowerblue;
 
 			& ul {
 				display: inline-flex;
 				flex-wrap: wrap;
 				justify-content: stretch;
-				margin: 0 20px;
+				margin: 140px 20px;
 
 				.listSeries {
 					width: 247px;
@@ -66,6 +120,8 @@ body {
 					align-items: center;
 					margin: 20px;
 					border-radius: 32px;
+					cursor: pointer;
+
 
 					img {
 						border-radius: 21px;
@@ -73,6 +129,13 @@ body {
 
 					}
 				}
+
+				
+				.favouritesMainStyle{
+					background-color: coral;
+					color: white;
+				}
+
 			}
 			
 			
