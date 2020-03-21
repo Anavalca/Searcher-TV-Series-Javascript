@@ -25,7 +25,7 @@ function showSeriesSearch(arr){
   for(let item of arr){
     let isFavourite = false;
     let liObject = document.createElement('li');
-    liObject.setAttribute('id',item.show.id);
+    liObject.setAttribute('id','ele_'+item.show.id);
     liObject.classList.add('listSeries');
 
     let imgObject = document.createElement('img');
@@ -40,7 +40,7 @@ function showSeriesSearch(arr){
     pObject.classList.add('main-title');
     pObject.appendChild(document.createTextNode(item.show.name));
 
-    //COMPROBAR SI EN LA BÚSQUEDA DE LA API HAY ALGÚN FAVORITO Y AÑADIRLE LA CLASE
+    //COMPROBAR SI EN LA BUSQUEDA DE LA API HAY ALGUN FAVORITO Y ANYADIRLE LA CLASE
     let startIcon;
     for(let favourite of favourites){
       if(item.show.id === parseInt(favourite.id)){
@@ -53,7 +53,7 @@ function showSeriesSearch(arr){
       }
     }
     
-    //CREAR ESTRUCTURA DE CADA OBJETO DE FAVORITOS
+    //CREAR ESTRUCTURA DE CADA OBJETO DEL MAIN
     liObject.appendChild(imgObject);
     liObject.appendChild(pObject);
     if(isFavourite){
@@ -61,13 +61,12 @@ function showSeriesSearch(arr){
     }
     ulSeries.appendChild(liObject);
 
-
   }
   addClickListeners();
 
 }
 
-//PINTAR AÑADIR EVENTO A LOS LI (CADA SERIE MOSTRADA)
+//ANYADIR EVENTO A LOS LI (CADA SERIE DEL MAIN)
 function addClickListeners(){
   const liList = document.querySelectorAll('#series_list li');
   for(let li of liList){
@@ -75,37 +74,38 @@ function addClickListeners(){
   }
 }
 
-//GUARDAR FAVORITOS
+//ACCION GUARDAR FAVORITOS
 function saveFavourites(event){
-  event.currentTarget.classList.add('favouritesMainStyle'); //COLOREAR FAVORITOS DEL LISTADO DEL MAIN
-  let startIcon = document.createElement('i');
-  startIcon.classList.add('icon_fav');
-  startIcon.classList.add('fas');
-  startIcon.classList.add('fa-star');
-  event.currentTarget.appendChild(startIcon);
-
+  
   let idFound = false;
-
-  //iteramos todos los elementos de favourites para saber si el nuevo elemento esta ya metido
+  
+  //ITERAMOS TODOS LOS ELEMENTOS DE FAVOURITES PARA SABER SI EL NUEVO ELEMENTO YA ESTABA METIDO
   for (let favourite of favourites){
-    if(favourite.id === event.currentTarget.id){
+    let elementId = event.currentTarget.id.substr(4);
+    if(favourite.id === elementId){
       idFound = true;
       break;
     }
   }
-  //si no estaba metido lo metemos
+  //SI NO ESTABA METIDO LO METEMOS
   if(idFound === false){
     setLocalStorage(event.currentTarget);
     renderFavourite(event.currentTarget);
+    event.currentTarget.classList.add('favouritesMainStyle'); //COLOREAR FAVORITOS DEL LISTADO DEL MAIN
+    let startIcon = document.createElement('i');
+    startIcon.classList.add('icon_fav');
+    startIcon.classList.add('fas');
+    startIcon.classList.add('fa-star');
+    event.currentTarget.appendChild(startIcon);
   } else {
-    removeFavouriteFromLu(event);
+    removeFavouriteFromUl(event);
   }
 }
 
 //PINTAR FAVORITOS EN EL ASIDE
 function renderFavourite(favouriteElement) {
   let favCopy = favouriteElement.cloneNode(true);
-  favCopy.id = 'fav_' + favCopy.id;
+  favCopy.id = favCopy.id.replace('ele', 'fav');
   let buttomItem = document.createElement('button');
   buttomItem.type = 'button';
   buttomItem.classList.add('deleteButton');
@@ -118,7 +118,7 @@ function renderFavourite(favouriteElement) {
 //GUARDAR FAVORITOS EN LOCALSTORAGE
 function setLocalStorage(currentFav) {
   let newFavourite = new Object();
-  newFavourite.id = currentFav.id;
+  newFavourite.id = currentFav.id.substr(4);
   newFavourite.imgSrc = currentFav.childNodes[0].src;
   newFavourite.name = currentFav.childNodes[1].textContent;
   
@@ -137,7 +137,7 @@ function readLocalStorage() {
   }
 }
 
-//PINTAR DATOS DE LOCAL STORAGE
+//PINTAR DATOS DEL LOCAL STORAGE
 function renderFavouritesOfLocalStorage(objectSerie) {
   let liObject = document.createElement('li');
   liObject.setAttribute('id', 'fav_' + objectSerie.id);
@@ -156,12 +156,11 @@ function renderFavouritesOfLocalStorage(objectSerie) {
   buttomItem.appendChild(document.createTextNode('x'));
   buttomItem.addEventListener('click',removeFavouriteFromButton);
 
-  //CREAR ESTRUCTURA DE CADA OBJETO DE FAVORITOS
+  //CREAR ESTRUCTURA DEL FAVORITO
   liObject.appendChild(imgObject);
   liObject.appendChild(pObject);
   liObject.appendChild(buttomItem);
   ulFav.appendChild(liObject);
-
 }
 
 function removeFavouriteFromId(id){
@@ -175,8 +174,13 @@ function removeFavouriteFromId(id){
     index++;
   }
 
-  let elementToRemove = document.querySelector('#fav_' + id);
+  //ELIMINAR DEL DOM EL ELEMENTO DE FAVORITOS
+  let elementToRemove = document.querySelector('#fav_'+id);
   elementToRemove.remove();
+  //QUITAR ESTILOS FAVORITOS DEL LISTADO DEL MAIN
+  let elementToRestore = document.querySelector('#ele_'+id);
+  elementToRestore.classList.remove('favouritesMainStyle');
+  elementToRestore.lastChild.remove();
 
 }
 
@@ -186,9 +190,9 @@ function removeFavouriteFromButton(event){
   removeFavouriteFromId(removeId);
 }
 
-function removeFavouriteFromLu(event){
-  event.currentTarget.classList.remove('favouritesMainStyle'); //QUITAR COLOR DE FAVORITOS DEL LISTADO DEL MAIN
+function removeFavouriteFromUl(event){
   let removeId = event.currentTarget.id;
+  removeId = removeId.substr(4);
   removeFavouriteFromId(removeId);
 }
 

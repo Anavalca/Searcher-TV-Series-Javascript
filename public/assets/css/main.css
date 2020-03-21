@@ -411,7 +411,7 @@ body .wrapper .main_container ul {
   -webkit-box-pack: stretch;
   -ms-flex-pack: stretch;
   justify-content: stretch;
-  margin: 190px 20px;
+  margin: 190px 60px 0 60px;
 }
 
 body .wrapper .main_container ul .listSeries {
