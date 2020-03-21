@@ -2,11 +2,12 @@
 
 const SearchInput = document.querySelector('#search_input');
 const searchButton = document.querySelector('#search_button');
-let ulSeries = document.querySelector('#series_list');
+let ulTvSeries = document.querySelector('#series_list');
 let ulFav = document.querySelector('#favourites_list');
 
-let series = [];
+let TvSeries = [];
 let favourites = [];
+//Cargo local Storage cada vez que recargo la página
 readLocalStorage();
 
 //LLAMAR A LA API PARA REALIZAR BÚSQUEDA
@@ -14,15 +15,15 @@ function loadSeries(){
   fetch(`http://api.tvmaze.com/search/shows?q=${SearchInput.value}`)
     .then(response => response.json())
     .then(data => {
-      series = data;
-      showSeriesSearch(series);
+      TvSeries = data;
+      showSeriesSearch(TvSeries);
     });
 }
 
-//PINTAR LOS RESULTADOS DE LA BUSQUEDA
-function showSeriesSearch(arr){
-  ulSeries.innerHTML = '';
-  for(let item of arr){
+//PINTAR LOS RESULTADOS DE LA BUSQUEDA EN EL MAIN
+function showSeriesSearch(arrTvSeries){
+  ulTvSeries.innerHTML = '';
+  for(let item of arrTvSeries){
     let isFavourite = false;
     let liObject = document.createElement('li');
     liObject.setAttribute('id','ele_'+item.show.id);
@@ -40,9 +41,9 @@ function showSeriesSearch(arr){
     pObject.classList.add('main-title');
     pObject.appendChild(document.createTextNode(item.show.name));
 
-    //COMPROBAR SI EN LA BUSQUEDA DE LA API HAY ALGUN FAVORITO Y ANYADIRLE LA CLASE
+    //COMPROBAR SI EN LA BUSQUEDA DE LA API HAY ALGUN FAVORITO, ANYADIRLE LA CLASE Y CREAR EL ICONO DE FAVORITO
     let startIcon;
-    for(let favourite of favourites){
+    for(let favourite of favourites){ 
       if(item.show.id === parseInt(favourite.id)){
         liObject.classList.add('favouritesMainStyle');
         startIcon = document.createElement('i');
@@ -56,14 +57,13 @@ function showSeriesSearch(arr){
     //CREAR ESTRUCTURA DE CADA OBJETO DEL MAIN
     liObject.appendChild(imgObject);
     liObject.appendChild(pObject);
-    if(isFavourite){
+    if(isFavourite){ // INCRUSTAR EL ICONO DE FAVORITO DETRÁS DE LOS ELEMENTOS CORRESPONDIENTES PARA QUE APAREZCA EL ULTIMO
       liObject.appendChild(startIcon);
     }
-    ulSeries.appendChild(liObject);
+    ulTvSeries.appendChild(liObject);
 
   }
   addClickListeners();
-
 }
 
 //ANYADIR EVENTO A LOS LI (CADA SERIE DEL MAIN)
@@ -76,22 +76,22 @@ function addClickListeners(){
 
 //ACCION GUARDAR FAVORITOS
 function saveFavourites(event){
-  
   let idFound = false;
   
   //ITERAMOS TODOS LOS ELEMENTOS DE FAVOURITES PARA SABER SI EL NUEVO ELEMENTO YA ESTABA METIDO
   for (let favourite of favourites){
-    let elementId = event.currentTarget.id.substr(4);
+    let elementId = event.currentTarget.id.substr(4); //ELIMINAMOS ELE_ DEL ID PARA COMPARARLO
     if(favourite.id === elementId){
       idFound = true;
-      break;
+      break; //SI ENCUENTRO MI ELEMENTO NO TENGO QUE SEGUIR ITERANDO
     }
   }
   //SI NO ESTABA METIDO LO METEMOS
   if(idFound === false){
     setLocalStorage(event.currentTarget);
     renderFavourite(event.currentTarget);
-    event.currentTarget.classList.add('favouritesMainStyle'); //COLOREAR FAVORITOS DEL LISTADO DEL MAIN
+    //COLOREAR FAVORITOS DEL LISTADO DEL MAIN Y ANYADIR ICONO FAV
+    event.currentTarget.classList.add('favouritesMainStyle'); 
     let startIcon = document.createElement('i');
     startIcon.classList.add('icon_fav');
     startIcon.classList.add('fas');
@@ -104,8 +104,8 @@ function saveFavourites(event){
 
 //PINTAR FAVORITOS EN EL ASIDE
 function renderFavourite(favouriteElement) {
-  let favCopy = favouriteElement.cloneNode(true);
-  favCopy.id = favCopy.id.replace('ele', 'fav');
+  let favCopy = favouriteElement.cloneNode(true); //ME CLONO EL LI DEL MAIN
+  favCopy.id = favCopy.id.replace('ele', 'fav'); //REMPLAZO LA CLASE PORQUE CLONO EL ELEMENTO DEL UL A FAVORITOS
   let buttomItem = document.createElement('button');
   buttomItem.type = 'button';
   buttomItem.classList.add('deleteButton');
@@ -140,7 +140,7 @@ function readLocalStorage() {
 //PINTAR DATOS DEL LOCAL STORAGE
 function renderFavouritesOfLocalStorage(objectSerie) {
   let liObject = document.createElement('li');
-  liObject.setAttribute('id', 'fav_' + objectSerie.id);
+  liObject.setAttribute('id', 'fav_' + objectSerie.id);//ANYADO FAV_ PORQUE NO ME DEJA BUSCAR UN ID DE NUMEROS 
   liObject.classList.add('listSeries');
 
   let imgObject = document.createElement('img');
@@ -163,6 +163,7 @@ function renderFavouritesOfLocalStorage(objectSerie) {
   ulFav.appendChild(liObject);
 }
 
+// CUANDO RECIBO EL ID QUE VIENE DE CADA LADO ELIMINO ELEMENTOS DE FAVORITOS Y ESTILOS DE LOS li DEL MAIN
 function removeFavouriteFromId(id){
   let index = 0;
   for (let favourite of favourites){
@@ -174,22 +175,22 @@ function removeFavouriteFromId(id){
     index++;
   }
 
-  //ELIMINAR DEL DOM EL ELEMENTO DE FAVORITOS
+  //ELIMINAR DE SECCION FAVORITOS EL ELEMENTO
   let elementToRemove = document.querySelector('#fav_'+id);
   elementToRemove.remove();
-  //QUITAR ESTILOS FAVORITOS DEL LISTADO DEL MAIN
+  //QUITAR ESTILOS DE FAVORITOS DEL LISTADO DEL MAIN
   let elementToRestore = document.querySelector('#ele_'+id);
   elementToRestore.classList.remove('favouritesMainStyle');
-  elementToRestore.lastChild.remove();
-
+  elementToRestore.lastChild.remove(); //ELIMINO ICONO DE FAVORITO
 }
 
+// BUSCO EL ID DEL ELEMENTO DE FAVORITOS DE LA **SECCIÓN** QUE QUIERO ELIMINAR
 function removeFavouriteFromButton(event){
   let removeId = event.currentTarget.parentElement.id;
   removeId = removeId.substr(4);
   removeFavouriteFromId(removeId);
 }
-
+// BUSCO EL ID DEL ELEMENTO DE FAVORITOS DEL **MAIN** QUE QUIERO ELIMINAR
 function removeFavouriteFromUl(event){
   let removeId = event.currentTarget.id;
   removeId = removeId.substr(4);
