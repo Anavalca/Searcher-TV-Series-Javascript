@@ -2,8 +2,6 @@ body {
 	font-family: $mainFont;
 	
 	.wrapper {
-		// display: grid;
-		// grid-template-columns: 1fr 4fr;
 		 height: 100vh;
 		 background-color: $secondaryColor;
 
@@ -66,12 +64,16 @@ body {
 					}
 				}
 			}
-			.aside_container{
-				background-color: $primaryColor;
+		
+			.section_container{
+				background-color: rgba(37, 145, 122, 0.911);
+				border-top: 2px white;
 				display: flex;
 				flex-direction: row;
 				align-items: center;
 				padding: 0 10px 0 10px;
+				height: 90px;
+				border-top: 7px solid white;
 
 				.icon_fav {
 					font-size: 18px;
@@ -145,6 +147,7 @@ body {
 					align-items: center;
 					margin: 20px;
 					border-radius: 32px;
+					box-shadow: 8px 8px 18px 0px rgba(0,0,0,0.75);
 					cursor: pointer;
 
 					img {
@@ -168,13 +171,9 @@ body {
 					font-size: 10px;
 					color: white;
 				}
-
 			}
-			
 		}
-
 	}
-
 }
 
 

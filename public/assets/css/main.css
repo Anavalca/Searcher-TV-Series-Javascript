@@ -317,8 +317,9 @@ body .wrapper .header_container header .search_container button .icon_search {
   font-size: 22px;
 }
 
-body .wrapper .header_container .aside_container {
-  background-color: #259179;
+body .wrapper .header_container .section_container {
+  background-color: rgba(37, 145, 122, 0.911);
+  border-top: 2px white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -330,14 +331,16 @@ body .wrapper .header_container .aside_container {
   -ms-flex-align: center;
   align-items: center;
   padding: 0 10px 0 10px;
+  height: 90px;
+  border-top: 7px solid white;
 }
 
-body .wrapper .header_container .aside_container .icon_fav {
+body .wrapper .header_container .section_container .icon_fav {
   font-size: 18px;
   color: white;
 }
 
-body .wrapper .header_container .aside_container #favourites_list {
+body .wrapper .header_container .section_container #favourites_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -353,7 +356,7 @@ body .wrapper .header_container .aside_container #favourites_list {
   align-items: center;
 }
 
-body .wrapper .header_container .aside_container #favourites_list .listSeries {
+body .wrapper .header_container .section_container #favourites_list .listSeries {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -372,18 +375,18 @@ body .wrapper .header_container .aside_container #favourites_list .listSeries {
   margin: 15px;
 }
 
-body .wrapper .header_container .aside_container #favourites_list .listSeries img {
+body .wrapper .header_container .section_container #favourites_list .listSeries img {
   width: 39px;
   border-radius: 46px;
 }
 
-body .wrapper .header_container .aside_container #favourites_list .listSeries .main-title {
+body .wrapper .header_container .section_container #favourites_list .listSeries .main-title {
   display: inline;
   font-size: 15px;
   padding: 8px;
 }
 
-body .wrapper .header_container .aside_container #favourites_list .listSeries .deleteButton {
+body .wrapper .header_container .section_container #favourites_list .listSeries .deleteButton {
   border-radius: 50%;
   font-size: 14px;
   font-weight: 200;
@@ -433,6 +436,8 @@ body .wrapper .main_container ul .listSeries {
   align-items: center;
   margin: 20px;
   border-radius: 32px;
+  -webkit-box-shadow: 8px 8px 18px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 8px 8px 18px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
 }
 
