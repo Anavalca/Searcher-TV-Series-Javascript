@@ -5,12 +5,14 @@ const searchButton = document.querySelector('#search_button');
 let ulTvSeries = document.querySelector('#series_list');
 let ulFav = document.querySelector('#favourites_list');
 let webLogo = document.querySelector('#title_container');
-let gif = document.querySelector('.gif_container');
+let gifCoverPage = document.querySelector('.gif_container');
+let favouritesIcon = document.querySelector('#icon_fav');
 
 let TvSeries = [];
 let favourites = [];
-apearTVgif();
-//Cargo local Storage cada vez que recargo la página
+
+//AL CARGAR AL PÁGINA PINTO LA CABECERA DE LA WEB Y LEO LOS DATOS DEL LOCAL STORAGE
+appearCoverPage();
 readLocalStorage();
 
 //LLAMAR A LA API PARA REALIZAR BÚSQUEDA
@@ -25,7 +27,7 @@ function loadSeries(){
 
 //PINTAR LOS RESULTADOS DE LA BUSQUEDA EN EL MAIN
 function showSeriesSearch(arrTvSeries){
-  removeChildren(gif);
+  removeChildren(gifCoverPage);
   removeChildren(ulTvSeries);
   for(let item of arrTvSeries){
     let isFavourite = false;
@@ -207,16 +209,16 @@ function removeFavouriteFromUl(event){
 function restaureWeb(){
   searchInput.value = '';
   removeChildren(ulTvSeries);
-  apearTVgif();
+  appearCoverPage();
 }
 
 //PINTAR PORTADA DE LA WEB
-function apearTVgif(){
+function appearCoverPage(){
   let gifObject = document.createElement('img');
   gifObject.setAttribute('src','./assets/images/tv.gif');
   gifObject.setAttribute('id', 'gif_tv');
-  removeChildren(gif);
-  gif.appendChild(gifObject);
+  removeChildren(gifCoverPage);
+  gifCoverPage.appendChild(gifObject);
 }
 
 //FUNCIÓN PARA ELIMINAR LOS HIJOS DE UN ELEMENTO
@@ -226,5 +228,26 @@ function removeChildren(object){
   }
 }
 
+//BORRAR TODOS LOS FAVORITOS DESDE EL ICONO DE LA SECCIÓN
+function deteleAllFavouties(){
+ 
+  favourites = [];
+  localStorage.setItem('seriesFavInfo', JSON.stringify(favourites));
+
+  removeChildren(ulFav);
+
+  //ELIMINAR ESTILOS FAV MAIN
+  let liMainArr = document.querySelectorAll('.favouritesMainStyle');
+  for(let liMain of liMainArr){
+    liMain.classList.remove('favouritesMainStyle');
+    liMain.lastChild.remove(); //ELIMINO ICONO DE FAVORITO
+  }
+
+  //estrellita vacia
+
+}
+
+
 searchButton.addEventListener('click', loadSeries);
 webLogo.addEventListener('click', restaureWeb);
+favouritesIcon.addEventListener('click',deteleAllFavouties);
