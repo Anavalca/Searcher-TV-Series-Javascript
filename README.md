@@ -1,48 +1,21 @@
+# Examen final - segundo modulo Adalab - Ana Valdivia Cano
+
+Realización de una página web de tipo buscador de series de televisión utilizando **HTML5, SASS y Javascript.**
+
+## Funcionalidades creadas con Javascript
+1. Realizar petición de datos de la Api: http://www.tvmaze.com/api.
+2. Generar elementos con DOM.
+3. Realizar una búsqueda por caracteres y pintar los resultados en la web.
+4. Poder seleccionar las diferentes películas y colocarlas en una sección de favoritos.
+5. Añadir estilos a las películas seleccionadas como favoritas en el listado de la búsqueda, y quitarlos al volver a pulsar sobre ellos.
+6. Colocar botones en las peliculas añadidas a favoritos para poder eliminarlas con un click.
+7. Crear un botón para borrar todos los favoritos de una vez.
+8. Guardar todos los datos de favoritos en localstorage, editarlos cuando borramos favoritos y recuperarlos al recargar la página.
+9. Realizar búsqueda mediante un click en el botón de búsqueda y pulsando la tecla enter.
+10. Añadir una coverpage inicial y poder volver a ella mediante un click en el logo de la web.
+
 ![Adalab](_src/assets/images/logo-adalab-80px.png)
 
-# Adalab web starter kit
-
-Ahoy! Esta es nuestro Starter Kit en node/gulp para este primer contacto con el desarrollo web
-Incluye SCSS, un sistema de plantillas HTML y un web server.
-
-## Guía de inicio rápido
-
-Necesitarás instalar [Node.js](https://nodejs.org/) y [Gulp](https://gulpjs.com) para trabajar con este Starter Kit, luego:
-
-1. Descarga o clona el repositorio
-2. Instala las dependencias locales con `npm install`
-3. Arranca el kit con `gulp`
-
-## Espera, ¿esto se hace siempre?
-
-> ### Solo una vez al principio en cada ordenador que utilicemos:
-
-- Instalamos node
-- Instalamos el comando de gulp de forma global para poder usarlo desde cualquier carpeta usando `npm install --global gulp-cli`
-
-> ### Cada vez que descarguemos o clonemos un repo:
-
-- `npm install` para instalar los paquetes necesarios para convertir Sass a CSS, minizarlo, etc.
-
-> ### Cada vez que estemos trabajando con nuestro código:
-
-- Desde nuestra terminal, ejecutamos el comando `gulp` para que realice la tarea por defecto, que en el caso del `gulpfile.js` que tenemos en adalab-web-starter-kit estará pendiente de nuestros archivos Sass, html y JavaScript y los compilará, minificará y/o recargará el servidor cada vez que hagamos un cambio
-
-## Tareas de gulp incluidas
-
-### Inicio de un web server para desarrollo
-
-```
-npm start
-```
-
-o lo que en este proyecto es lo mismo:
-
-```
-gulp
-```
-
-Lanza un webserver con BrowserSync y varios watchers estarán pendientes de los archivos SCSS/JS/HTML, en la carpeta **public/**, para recargar el navegador cuando se necesite.
 
 ### Versión lista para subir a producción
 
@@ -70,55 +43,5 @@ npm run push-docs
 
 Este comando borra la carpeta **docs/**, la vuelve a generar, crea un commit con los nuevos ficheros y hace un `git push`, todo del tirón. ¿Cómo se te queda el cuerpo?. Si quieres saber cómo funciona échale un ojo al fichero `package.json`.
 
-## Flujo de archivos con gulp
 
-Estas tareas de gulp producen el siguiente flujo de archivos:
 
-![Gulp flow](./gulp-flow.png)
-
-## Estructura del proyecto
-
-Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archivos a generar/vigilar.
-
-La estructura de carpetas tiene esta pinta:
-
-```
-/
-`- _src
-   |- api
-   |  |- data.json // para crearnos un servidor de datos local
-   |- assets
-   |  |- icons
-   |  |- images
-   |  |- js
-   |  `- scss
-   |     `- core
-   |
-   `- templates
-      `- partials
-
-```
-
-## HTML
-
-Viene incluído el paquete [**gulp-html-partial**](https://www.npmjs.com/package/gulp-html-partial) que nos va a permitir tener un sistema de plantillas html
-
-## Imágenes e iconos
-
-Tenemos en **\_src/** una carpeta para las imágenes del proyecto y una para los iconos como el favicon o los iconos de dispositivos móviles. Estos últimos se generan en la raíz de las carpetas **public/** y **docs/**
-
-## CSS
-
-Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las mediaqueries al final del documento css.
-
-## JS
-
-Podemos usar parciales de JS: en el JSON de configuración, **config.json** especificamos los archivos JS que utilizamos y en el orden que deben procesarse.
-
-## ¿Cómo actualizo si tengo una versión anterior?
-
-En principio puedes descargar todos los archivos fuera de **\_src/** y sustituir los de tu proyecto. Además deberías replicar la estructura de carpetas dentro de **\_src/**.
-
-## Falta algo?
-
-Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
