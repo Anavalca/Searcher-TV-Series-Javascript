@@ -244,6 +244,7 @@ body .wrapper {
 body .wrapper .header_container {
   position: fixed;
   width: 100%;
+  z-index: 2;
 }
 
 body .wrapper .header_container header {
@@ -302,6 +303,8 @@ body .wrapper .header_container header .search_container input {
   width: 330px;
   margin-right: 10px;
   padding: 10px;
+  outline: none;
+  cursor: pointer;
 }
 
 body .wrapper .header_container header .search_container button {
@@ -310,8 +313,9 @@ body .wrapper .header_container header .search_container button {
   width: 45px;
   height: 45px;
   border-bottom: none;
-  cursor: pointer;
   color: #259179;
+  cursor: pointer;
+  outline: none;
 }
 
 body .wrapper .header_container header .search_container button .icon_search {
@@ -331,15 +335,20 @@ body .wrapper .header_container .section_container {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 10px 0 10px;
+  padding: 0 10px 0 18px;
   height: 90px;
   border-top: 7px solid white;
 }
 
 body .wrapper .header_container .section_container .icon_fav {
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   cursor: pointer;
+}
+
+body .wrapper .header_container .section_container .icon_fav:hover {
+  -webkit-animation: beat .40s infinite alternate;
+  animation: beat .40s infinite alternate;
 }
 
 body .wrapper .header_container .section_container #favourites_list {
@@ -465,6 +474,12 @@ body .wrapper .main_container ul .listSeries {
   -webkit-box-shadow: 8px 8px 18px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 8px 8px 18px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
+  z-index: 1;
+}
+
+body .wrapper .main_container ul .listSeries:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 body .wrapper .main_container ul .listSeries img {
@@ -487,6 +502,20 @@ body .wrapper .main_container ul .icon_fav {
   margin-top: 3px;
   font-size: 10px;
   color: white;
+}
+
+@-webkit-keyframes beat {
+  to {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+
+@keyframes beat {
+  to {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

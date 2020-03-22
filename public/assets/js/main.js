@@ -119,6 +119,7 @@ function renderFavourite(favouriteElement) {
   buttomItem.appendChild(document.createTextNode('x'));
   favCopy.appendChild(buttomItem);
   ulFav.appendChild(favCopy);
+  changeStarFavoutitesIcon();
 }
 
 //GUARDAR FAVORITOS EN LOCALSTORAGE
@@ -167,6 +168,8 @@ function renderFavouritesOfLocalStorage(objectSerie) {
   liObject.appendChild(pObject);
   liObject.appendChild(buttomItem);
   ulFav.appendChild(liObject);
+
+  changeStarFavoutitesIcon();
 }
 
 // CUANDO RECIBO EL ID QUE VIENE DE CADA LADO ELIMINO ELEMENTOS DE FAVORITOS Y ESTILOS DE LOS li DEL MAIN
@@ -190,6 +193,7 @@ function removeFavouriteFromId(id){
     elementToRestore.classList.remove('favouritesMainStyle');
     elementToRestore.lastChild.remove(); //ELIMINO ICONO DE FAVORITO
   }
+  changeStarFavoutitesIcon();
 }
 
 // BUSCO EL ID DEL ELEMENTO DE FAVORITOS DE LA **SECCIÓN** QUE QUIERO ELIMINAR
@@ -217,6 +221,8 @@ function appearCoverPage(){
   let gifObject = document.createElement('img');
   gifObject.setAttribute('src','./assets/images/tv.gif');
   gifObject.setAttribute('id', 'gif_tv');
+  gifObject.setAttribute('title', 'Stay home');
+  gifObject.setAttribute('alt', 'gif tv message:stay home');
   removeChildren(gifCoverPage);
   gifCoverPage.appendChild(gifObject);
 }
@@ -243,12 +249,29 @@ function deteleAllFavouties(){
     liMain.lastChild.remove(); //ELIMINO ICONO DE FAVORITO
   }
 
-  //estrellita vacia
-
+  changeStarFavoutitesIcon();
 }
 
+//FUNCION PARA REALIZAR BUSQUEDA CON EL ENTER
+
+function activeSearchWithEnter(event) {
+  if (event.keyCode === 13) {
+    loadSeries();
+  }
+}
+
+function changeStarFavoutitesIcon(){
+  if(ulFav.childNodes.length === 0){
+    favouritesIcon.classList.remove('fas');
+    favouritesIcon.classList.add('far');
+  } else {
+    favouritesIcon.classList.remove('far');
+    favouritesIcon.classList.add('fas');
+  }
+}
 
 searchButton.addEventListener('click', loadSeries);
 webLogo.addEventListener('click', restaureWeb);
 favouritesIcon.addEventListener('click',deteleAllFavouties);
+document.addEventListener('keydown', activeSearchWithEnter);
 //# sourceMappingURL=main.js.map
