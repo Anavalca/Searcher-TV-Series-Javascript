@@ -163,7 +163,7 @@ body {
 				display: inline-flex;
 				flex-wrap: wrap;
 				justify-content: stretch;
-				margin: 170px 35px 0 35px;
+				margin: 170px 30px 0 30px;
 				
 				.alert {
 					text-align: center;
@@ -172,8 +172,8 @@ body {
 				}
 
 				.listSeries {
-					width: 220px;
-					height: 343px;
+					width: 236px;
+    				height: 366px;
 					background-color: white;
 					display: flex;
 					flex-direction: column;
@@ -190,6 +190,7 @@ body {
 					}
 
 					img {
+						width: 88%;
 						border-radius: 21px;
 						margin-bottom: 12px;
 					}
