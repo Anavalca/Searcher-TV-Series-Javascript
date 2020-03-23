@@ -8,7 +8,7 @@ let webLogo = document.querySelector('#title_container');
 let gifCoverPage = document.querySelector('.gif_container');
 let favouritesIcon = document.querySelector('#icon_fav');
 
-let TvSeries = [];
+let tvSeries = [];
 let favourites = [];
 
 //AL CARGAR AL PÁGINA PINTO LA CABECERA DE LA WEB Y LEO LOS DATOS DEL LOCAL STORAGE
@@ -20,8 +20,14 @@ function loadSeries(){
   fetch(`http://api.tvmaze.com/search/shows?q=${searchInput.value}`)
     .then(response => response.json())
     .then(data => {
-      TvSeries = data;
-      showSeriesSearch(TvSeries);
+      tvSeries = data;
+      showSeriesSearch(tvSeries);
+      if(tvSeries.length == 0){
+        let pObject = document.createElement('p');
+        pObject.classList.add('alert');
+        pObject.appendChild(document.createTextNode('No hay elementos para esa búsqueda'));
+        ulTvSeries.appendChild(pObject);
+      }
     });
 }
 

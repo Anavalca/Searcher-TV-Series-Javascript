@@ -304,7 +304,7 @@ body .wrapper .header_container header .search_container input {
   margin-right: 10px;
   padding: 10px;
   outline: none;
-  cursor: pointer;
+  cursor: text;
 }
 
 body .wrapper .header_container header .search_container button {
@@ -412,7 +412,6 @@ body .wrapper .header_container .section_container #favourites_list .listSeries 
 }
 
 body .wrapper .main_container {
-  height: auto;
   background-color: #3f3f3f;
 }
 
@@ -450,6 +449,12 @@ body .wrapper .main_container ul {
   -ms-flex-pack: stretch;
   justify-content: stretch;
   margin: 190px 60px 0 60px;
+}
+
+body .wrapper .main_container ul .alert {
+  text-align: center;
+  color: white;
+  font-size: 24px;
 }
 
 body .wrapper .main_container ul .listSeries {

@@ -49,7 +49,7 @@ body {
 						margin-right: 10px;
 						padding: 10px;
 						outline: none;
-						cursor: pointer;
+						cursor: text;
 					}
 				
 
@@ -141,7 +141,6 @@ body {
 		}
 	
 		.main_container{
-			height: auto;
 			background-color: $secondaryColor;
 
 			.gif_container{
@@ -165,6 +164,12 @@ body {
 				flex-wrap: wrap;
 				justify-content: stretch;
 				margin: 190px 60px 0 60px;
+				
+				.alert {
+					text-align: center;
+					color: white;
+					font-size: 24px;
+				}
 
 				.listSeries {
 					width: 247px;
