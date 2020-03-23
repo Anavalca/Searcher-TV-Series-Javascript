@@ -433,10 +433,10 @@ body .wrapper .main_container .gif_container {
 }
 
 body .wrapper .main_container .gif_container #gif_tv {
-  width: 350px;
+  width: 300px;
   border: solid 12px white;
   border-radius: 2rem;
-  margin-top: 225px;
+  margin-top: 200px;
 }
 
 body .wrapper .main_container ul {
@@ -448,7 +448,7 @@ body .wrapper .main_container ul {
   -webkit-box-pack: stretch;
   -ms-flex-pack: stretch;
   justify-content: stretch;
-  margin: 190px 60px 0 60px;
+  margin: 170px 35px 0 35px;
 }
 
 body .wrapper .main_container ul .alert {
@@ -458,8 +458,8 @@ body .wrapper .main_container ul .alert {
 }
 
 body .wrapper .main_container ul .listSeries {
-  width: 247px;
-  height: 370px;
+  width: 220px;
+  height: 343px;
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
