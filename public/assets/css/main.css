@@ -488,6 +488,7 @@ body .wrapper .main_container ul .listSeries:hover {
 }
 
 body .wrapper .main_container ul .listSeries img {
+  width: 88%;
   border-radius: 21px;
   margin-bottom: 12px;
 }
