@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Coronavirus TV</title>
+        <script src="https://kit.fontawesome.com/260175cdbc.js"
+        crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:500,600|Special+Elite&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/main.css" />
+    </head>
+    
+    <body>
+        <div class="wrapper">
+            <div class="header_container">
+                <header>
+                    <div id="title_container">
+                         <h1 title="Logo Coronavirus tv">C<img id="icon_title" src="./assets/images/virus.png" alt="icono virus">RONAVIRUS TV</h1>
+
+                    </div>
+                    <div class="search_container">
+                        <input id="search_input" type="text" placeholder="Buscador de series">
+                        <button id="search_button" type="button" title="Realizar busqueda"><i alt="icono de busqueda" class="icon_search fas fa-search"></i>
+                        </button>
+                    </div>
+                </header>
+                <section class="section_container"> <i id="icon_fav" class="icon_fav far fa-star" title="Borrar favoritos"></i>
+
+                    <ul
+                    id="favourites_list"></ul>
+                        <!--favoritos-->
+                        </ul>
+                </section>
+            </div>
+            <main class="main_container">
+                <div class="gif_container">
+                    <!-- <img id="gif_tv" src="./assets/images/tv.gif" alt=""> -->
+                </div>
+                <ul id="series_list">
+                    <!--Listado de series de las API-->
+                </ul>
+            </main>
+            <footer></footer>
+        </div>
+        <script src="./assets/js/main.js"></script>
+    </body>
+
+</html>
