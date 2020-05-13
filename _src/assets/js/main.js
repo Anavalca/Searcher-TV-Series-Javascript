@@ -53,6 +53,7 @@ function showSeriesSearch(arrTvSeries){
     pObject.classList.add('main-title');
     pObject.appendChild(document.createTextNode(item.show.name));
 
+   
     //COMPROBAR SI EN LA BUSQUEDA DE LA API HAY ALGUN FAVORITO, ANYADIRLE LA CLASE Y CREAR EL ICONO DE FAVORITO
     let startIcon;
     for(let favourite of favourites){ 
@@ -274,6 +275,15 @@ function changeStarFavoutitesIcon(){
     favouritesIcon.classList.remove('far');
     favouritesIcon.classList.add('fas');
   }
+}
+
+function showAllFavourites(){
+  
+  for(let favourite of favourites){
+
+    console.log(favourite.name);
+  }
+ 
 }
 
 searchButton.addEventListener('click', loadSeries);

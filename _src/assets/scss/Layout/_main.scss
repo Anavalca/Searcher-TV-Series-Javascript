@@ -1,226 +1,330 @@
 body {
-	font-family: $mainFont;
-	
-	.wrapper {
-		 height: 100vh;
-		 background-color: $secondaryColor;
+  font-family: $mainFont;
 
-		.header_container {
-			position: fixed;
+  .wrapper {
+    height: 100vh;
+    background-color: $secondaryColor;
+
+    .header_container {
+      position: fixed;
+      width: 100%;
+	  z-index: 2;
+	  height: 0px;
+
+      header {
+        background-color: $secondaryColor;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0 20px 0;
+
+        @include forTablet {
+          height: 80px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 40px 0 40px;
+        }
+
+        #title_container {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          #icon_title {
+            width: 23px;
+
+            @include forTablet {
+              width: 33px;
+            }
+          }
+
+          h1 {
+            font-family: $titleFont;
+            font-size: 29px;
+            padding-top: 8px;
+            padding-bottom: 15px;
+            margin: 0px;
+            color: white;
+
+            @include forTablet {
+              font-size: 42px;
+              padding-top: 8px;
+              padding-bottom: 0px;
+            }
+          }
+        }
+
+        .search_container {
+          display: flex;
+          align-items: center;
+
+
+          input {
+            border-radius: 2rem;
+            border: none;
+            height: 30px;
+            width: 200px;
+            margin-right: 5px;
+            padding: 10px;
+            outline: none;
+            cursor: text;
+
+            @include forTablet {
+              height: 45px;
+              width: 330px;
+              margin-right: 7px;
+              padding: 10px;
+            }
+          }
+
+
+          button {
+            border-radius: 2rem;
+            border: none;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-bottom: none;
+            color: $primaryColor;
+            cursor: pointer;
+            outline: none;
+
+            @include forTablet {
+              width: 45px;
+              height: 45px;
+            }
+
+            .icon_search {
+              font-size: 15px;
+
+              @include forTablet {
+                font-size: 22px;
+              }
+            }
+
+          }
+        }
+      }
+
+      .section_container {
+        background-color: rgba(37, 145, 122, 0.911);
+        min-height: 100vh;
+        width: 30%;
+        border-top: 7px solid white;
+		border-right: 7px solid white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start ;
+
+        @include forTablet {
+          width: 100%;
+		  min-height: 90px;
+		  min-height: none;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 0 10px 0 18px;
+          border-top: 7px solid white;
+          border-right: none;
+        }
+
+        .icon_fav {
+          font-size: 20px;
+          color: white;
+		  cursor: pointer;
+		  padding: 10px;
+
+          &:hover {
+            animation: beat .40s infinite alternate;
+
+            @keyframes beat {
+              to {
+                transform: scale(1.2);
+              }
+            }
+
+          }
+        }
+
+        #favourites_list {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          align-items: center;
+          height: 100%;
+
+          @include forTablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .listSeries {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background: white;
+			border-radius: 20px;
+			width: 80%;
+			margin-bottom: 9px;	
+			padding: 4px;		            
+
+            @include forTablet {
+              display: flex;
+			  flex-direction: row;
+			  justify-content: space-between;
+			  max-width: 250px;
+			  margin: 10px;
+			  padding: 0;
+			  width: auto;	
+
+            }
+
+            img {
+              width: 35px;
+              border-radius: 20px;
+
+              @include forTablet{
+				width: 39px;
+				border-radius: 46px;
+            }
+          }
+
+          .main-title {
+			font-size: 12px;
+			text-align: center;
+			padding: 8px;
+			@include forTablet {
+            font-size: 15px;
+			padding: 8px;
+		  }
+          }
+
+          .deleteButton {
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 200;
+            height: 18px;
+            width: 18px;
+            background-color: $primaryColor;
+            color: white;
+            padding-bottom: 6px;
+            border: none;
+			cursor: pointer;
+			
+			@include forTablet{
+				margin-right: 8px;
+			}
+          }
+        }
+
+      }
+    }
+  }
+
+  .main_container {
+    background-color: $secondaryColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    .gif_container {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+		width: 100%;
+		padding-right: 20px;
+
+		@include forTablet{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
 			width: 100%;
-			z-index: 2;
-
-			header{
-				height: 80px;
-				background-color: $secondaryColor;
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-				align-items: center;
-				padding: 0 40px 0 40px;
-
-				#title_container {
-					display: flex;
-					align-items: center;
-					cursor: pointer;
-
-					#icon_title {
-						width: 33px;
-					}
-			
-					h1 {
-						font-family: $titleFont;
-						font-size: 42px;
-						padding-top: 8px;
-						margin: 0px;
-						color: white;
-					}
-				}
-
-				.search_container {
-					display: flex;
-					align-items: center;
-					
-										
-					input {
-						border-radius: 2rem;
-						height: 45px;
-						width: 330px;
-						margin-right: 10px;
-						padding: 10px;
-						outline: none;
-						cursor: text;
-					}
-				
-
-					button{
-						border-radius: 2rem;
-						display: inline-block;
-						width: 45px;
-						height: 45px;
-						border-bottom: none;
-						color: $primaryColor;
-						cursor: pointer;
-						outline: none;
-
-						.icon_search{
-							font-size: 22px;
-						}
-
-					}
-				}
-			}
-		
-			.section_container{
-				background-color: rgba(37, 145, 122, 0.911);
-				border-top: 2px white;
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				padding: 0 10px 0 18px;
-				height: 90px;
-				border-top: 7px solid white;
-
-				.icon_fav {
-					font-size: 20px;
-					color: white;
-					cursor: pointer;
-
-					&:hover{
-						animation: beat .40s infinite alternate;
-						@keyframes beat{
-							to { transform: scale(1.2); }
-						}
-
-					}
-				}
-
-				#favourites_list {
-					display: flex;
-					flex-direction: row;
-					justify-content: start;
-					align-items: center;
-
-					.listSeries{
-						display: flex;
-						flex-direction: row;
-						justify-content: space-evenly;
-						align-items: center;
-						background: white;
-						border-radius: 20px;
-						margin: 15px;
-
-						img {
-							width: 39px;
-							border-radius: 46px;
-						}
-
-						.main-title {
-							display: inline;
-							font-size: 15px;
-							padding: 8px;
-						}
-
-						.deleteButton {
-							border-radius: 50%;
-							font-size: 14px;
-							font-weight: 200;
-							height: 18px;
-							width: 18px;
-							background-color: $primaryColor;
-							color: white;
-							margin-right: 8px;
-							padding-bottom: 6px;
-							border: none;
-							cursor: pointer;
-						}
-					}
-
-				}
-			}
+			padding-right: 0px;
 		}
-	
-		.main_container{
-			background-color: $secondaryColor;
 
-			.gif_container{
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-				width: 100%;
+      #gif_tv {
+        width: 240px;
+        border: solid 12px white;
+        border-radius: 2rem;
+		margin-top: 200px;
+		
+		 @include forTablet{
+			width: 300px;
+		 }
+      }
+    }
 
-				#gif_tv {
-					width: 300px;
-					border: solid 12px white;
-					border-radius: 2rem;
-					margin-top: 200px;
-				}
-			}
-			
 
-			& ul {
-				display: inline-flex;
-				flex-wrap: wrap;
-				justify-content: stretch;
-				margin: 170px 30px 0 30px;
-				
-				.alert {
-					text-align: center;
-					color: white;
-					font-size: 24px;
-				}
+    & ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 110px 0px 0px 0px;
 
-				.listSeries {
-					width: 236px;
-    				height: 366px;
-					background-color: white;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					margin: 20px;
-					border-radius: 32px;
-					box-shadow: 8px 8px 18px 0px rgba(0,0,0,0.75);
-					cursor: pointer;
-					z-index: 1;
+      @include forTablet {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 170px 30px 0 30px;
+      }
 
-					&:hover {
-						transform: scale(1.05);
-					}
+      .alert {
+        text-align: center;
+        color: white;
+        font-size: 24px;
+      }
 
-					img {
-						width: 88%;
-						border-radius: 21px;
-						margin-bottom: 12px;
-					}
+      .listSeries {
+        width: 236px;
+        height: 366px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        border-radius: 32px;
+        box-shadow: 8px 8px 18px 0px rgba(0, 0, 0, 0.75);
+        cursor: pointer;
+        z-index: 1;
 
-					.main-title{
-						font-size: 15px;
-						font-weight: 600;
-						text-align: center;
-					}
-				}
+        &:hover {
+          transform: scale(1.05);
+        }
 
-				.favouritesMainStyle{
-					background-color:$primaryColor;
-					color: white;
-				}
+        img {
+          width: 88%;
+          border-radius: 21px;
+          margin-bottom: 12px;
+        }
 
-				.icon_fav {
-					margin-top: 3px;
-					font-size: 10px;
-					color: white;
-				}
-			}
-		}	
-	}
+        .main-title {
+          font-size: 15px;
+          font-weight: 600;
+          text-align: center;
+        }
+      }
+
+      .favouritesMainStyle {
+        background-color: $primaryColor;
+        color: white;
+      }
+
+      .icon_fav {
+        margin-top: 3px;
+        font-size: 10px;
+        color: white;
+      }
+    }
+  }
 }
-
-
-
-
-
-
-
-
+}
